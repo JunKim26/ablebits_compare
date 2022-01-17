@@ -1,3 +1,7 @@
+# Title : Bounced Emails
+# Author: Jun Kim
+# Date: 12/22/2021
+# Description: 
 
 import pandas as pd                                                        
 import os                                                                   # used to create relative path to write file
