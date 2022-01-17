@@ -1,4 +1,4 @@
-# Title : Bounced Emails
+# Title : Compare Two Tables
 # Author: Jun Kim
 # Date: 12/22/2021
 # Description: In this program, a GUI will mimic the function of the compare tables in Ablebits. Once the program is run, a tkinter will be used to prompt a user to choose two CSV files. 
