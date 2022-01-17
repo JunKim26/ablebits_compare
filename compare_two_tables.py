@@ -1,4 +1,4 @@
-# Title : Compare Two Tables
+# Title : Bounced Emails
 # Author: Jun Kim
 # Date: 12/22/2021
 # Description: In this program, a GUI will mimic the function of the compare tables in Ablebits. Once the program is run, a tkinter will be used to prompt a user to choose two CSV files. 
@@ -20,7 +20,7 @@ from datetime import datetime
 window = tk.Tk()                                                            # creates a tkinter object
 window.geometry('200x200')                                                  # set size of tkinter window
 
-label = tk.Label(text='CSV Campaign')                                       # sets the text to be dipslayed by tkinter
+label = tk.Label(text='Compare Tables')                                     # sets the text to be dipslayed by tkinter
 label.pack()
 
 def csv_opener():
@@ -80,13 +80,13 @@ def main():
     for i in ids_df['Comparison Values']:                               # The name of the column that contains the comparison values
         comparison_values.append(i)
 
-    for i in range(len(csv_df['ID'])):                                      # Primary ID 
+    for i in range(len(csv_df['Key ID'])):                                      # Primary ID 
         if csv_df[csv_second_column][i] in comparison_values:
             
-            new_data = csv_df['ID'][i]
+            new_data = csv_df['Key ID'][i]
             matched_IDs.append(new_data)
 
-    matched_IDs_df = pd.DataFrame(matched_IDs, columns=['ID'])
+    matched_IDs_df = pd.DataFrame(matched_IDs, columns=['Key ID'])
 
     matched_IDs_df[csv_second_column] = ''
 
