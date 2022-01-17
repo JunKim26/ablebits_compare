@@ -1,4 +1,4 @@
-# Title : Bounced Emails
+# Title : Compare Two Tables
 # Author: Jun Kim
 # Date: 12/22/2021
 # Description: In this program, a GUI will mimic the function of the compare tables in Ablebits. Once the program is run, a tkinter will be used to prompt a user to choose two CSV files. 
@@ -20,7 +20,7 @@ from datetime import datetime
 window = tk.Tk()                                                            # creates a tkinter object
 window.geometry('200x200')                                                  # set size of tkinter window
 
-label = tk.Label(text='Compare Tables')                                     # sets the text to be dipslayed by tkinter
+label = tk.Label(text='Compare Two Tables')                                     # sets the text to be dipslayed by tkinter
 label.pack()
 
 def csv_opener():
