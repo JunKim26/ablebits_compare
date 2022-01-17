@@ -5,4 +5,4 @@ In this program, a GUI will mimic the function of the compare tables in Ablebits
 One file will contain the primary keys and another column with values for commparison. The second value will contain the values we are comparing with the first CSV file. 
 The resulting output file will contain only the rows that had a matching value and save to a folder with a timestamp. 
 
-In order to reduce the time complexity, an array is used to hold the values of the bounced emails.
+In order to reduce the time complexity, an array is used to hold the values of the bounced emails. This addition makes it so that a nesting loop is no longer needed.
