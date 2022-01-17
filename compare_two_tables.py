@@ -1,7 +1,9 @@
 # Title : Bounced Emails
 # Author: Jun Kim
 # Date: 12/22/2021
-# Description: 
+# Description: In this program, a GUI will mimic the function of the compare tables in Ablebits. Once the program is run, a tkinter will be used to prompt a user to choose two CSV files. 
+# One file will contain the primary keys and another column with values for commparison. The second value will contain the values we are comparing with the first CSV file. 
+# The resulting output file will contain only the rows that had a matching value and save to a folder with a timestamp.
 
 import pandas as pd                                                        
 import os                                                                   # used to create relative path to write file
