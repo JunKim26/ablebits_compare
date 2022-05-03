@@ -6,21 +6,17 @@
 # If the email addresses match, respective IDs will be written in to the new file.
 
 import pandas as pd                                                        
-import os                                                                   # used to create relative path to write file
-import tkinter as tk                                                        # used as a user friendly tool for the program
+import os                                                                   
+import tkinter as tk                                                        
 from tkinter import *                                                    
 from tkinter.filedialog import askopenfilename
 from datetime import datetime                                             
 
 
-# =======================================================================================================================================================
-#                                                           Script lines for Tkinter GUI
-# =======================================================================================================================================================
+window = tk.Tk()                                                            
+window.geometry('200x200')                                                  
 
-window = tk.Tk()                                                            # creates a tkinter object
-window.geometry('200x200')                                                  # set size of tkinter window
-
-label = tk.Label(text='CSV Campaign')                                       # sets the text to be dipslayed by tkinter
+label = tk.Label(text='CSV Campaign')                                       
 label.pack()
 
 def csv_opener():
@@ -29,8 +25,8 @@ def csv_opener():
     global csv_file
     global csv_df
 
-    csv_name = askopenfilename()                                            # show an "Open" dialog box and return the path to the selected file
-    csv_file = open(csv_name, 'r')		                                    # opens the csv file to read
+    csv_name = askopenfilename()                                            
+    csv_file = open(csv_name, 'r')		                                    
     csv_data = pd.read_csv(csv_file) 
     csv_df = pd.DataFrame(csv_data)  
 
@@ -52,32 +48,34 @@ def comparison_opener():
 
     return None
 
-# =======================================================================================================================================================
-#                                                           Main Function Section
-# =======================================================================================================================================================
 
 def main():
-                                                                            # Buttons that will show up on the tkinter window for user
+    
+    # Buttons that will show up on the tkinter window for user
     csv_button = Button(window, text = 'Open CSV File', command = csv_opener).pack() 
     ids_button = Button(window, text = 'Open Comparison File', command = comparison_opener).pack()
 
     window.mainloop()
-
-    dt = datetime.now().strftime('%Y_%m_%d-%I_%M_%S_%p')                    # year_month_day-hours_minutes_seconds_AM/PM ; used in Title                                                            
+    
+    # year_month_day-hours_minutes_seconds_AM/PM ; used in Title    
+    dt = datetime.now().strftime('%Y_%m_%d-%I_%M_%S_%p')                                                                        
 
     input_file = os.path.basename(csv_name)
-    file_name = str(dt) +" Matches from " + input_file                      # sets the file name 
+    file_name = str(dt) +" Matches from " + input_file                      
 
-    script_dir = os.path.dirname(__file__)                                  # absolute directory the script is in
+    script_dir = os.path.dirname(__file__)                                  
     rel_path = 'Output'
-    abs_file_path = os.path.join(script_dir, rel_path)                      # this joins the absolute path of current script with wanted relative path
+    
+    # this joins the absolute path of current script with wanted relative path
+    abs_file_path = os.path.join(script_dir, rel_path)                      
 
     bounced_emails = []
     bad_household_ID = []
 
     csv_second_column = csv_df.columns[1]
-
-    for email in ids_df['Bounced Emails']:                                  # for loop to find the matching household id to the email
+    
+    # for loop to find the matching household id to the email
+    for email in ids_df['Bounced Emails']:                                  
         bounced_emails.append(email)
 
     for i in range(len(csv_df['Household ID'])):
@@ -91,13 +89,14 @@ def main():
 
     bounced_emails_match_ids[csv_second_column] = ''
 
-    with open(abs_file_path+'/'+file_name, 'w',newline='') as new_file:	    # creates csv to write in
+    with open(abs_file_path+'/'+file_name, 'w',newline='') as new_file:	    
 
-        bounced_emails_match_ids.to_csv(new_file, index=False)              # writes the dataframe into the new file without the indices
+        bounced_emails_match_ids.to_csv(new_file, index=False)              
 
         csv_file.close()
         ids_file.close()
 
+        
 if __name__ == '__main__':
     main()
 
